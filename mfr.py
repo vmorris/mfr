@@ -39,7 +39,7 @@ class Food:
     def is_vegitarian(self):
         return not self.is_meat
 
-    def eat(self, other: Food):
+    def eat(self, other):
         return Food(name="poop", icon="💩", is_meat=False)
 
     def __str__(self) -> str:
