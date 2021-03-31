@@ -4,8 +4,7 @@ from functools import reduce
 
 
 class Food:
-    def __init__(self, name: str, icon: str, is_meat: bool, is_cooked: bool = False):
-        self.name = name
+    def __init__(self, icon: str, is_meat: bool, is_cooked: bool = False):
         self.icon = icon
         self.is_meat = is_meat
         self.is_cooked = is_cooked
@@ -15,24 +14,19 @@ class Food:
         if self.is_cooked:
             return self
 
-        if self.name == "cow":
-            self.name = "beef"
+        if self.icon == "🐮":
             self.icon = "🍖"
-        elif self.name == "chicken":
-            self.name = "drumstick"
+        elif self.icon == "🐔":
             self.icon = "🍗"
-        elif self.name == "fish":
-            self.name = "oden"
+        elif self.icon == "🐟":
             self.icon = "🍢"
-        elif self.name == "pig":
-            self.name = "porkchop"
+        elif self.icon == "🐷":
             self.icon = "🥩"
-        elif self.name == "corn":
-            self.name = "popcorn"
+        elif self.icon == "🌽":
             self.icon = "🍿"
-        elif self.name == "potato":
-            self.name = "fries"
+        elif self.icon == "🥔":
             self.icon = "🍟"
+
         self.is_cooked = True
         return self
 
@@ -40,10 +34,9 @@ class Food:
         return not self.is_meat
 
     def eat(self, other):
-        return Food(name="poop", icon="💩", is_meat=False)
-
-    def __str__(self) -> str:
-        return self.__repr__()
+        if other.icon == "💩":
+            raise Exception("Don't eat poop!")
+        return Food(icon="💩", is_meat=False)
 
     def __repr__(self) -> str:
         return self.icon
@@ -51,12 +44,12 @@ class Food:
 
 if __name__ == "__main__":
     my_food = [
-        Food(name="cow", icon="🐮", is_meat=True),
-        Food(name="chicken", icon="🐔", is_meat=True),
-        Food(name="fish", icon="🐟", is_meat=True),
-        Food(name="pig", icon="🐷", is_meat=True),
-        Food(name="corn", icon="🌽", is_meat=False),
-        Food(name="potato", icon="🥔", is_meat=False),
+        Food(icon="🐮", is_meat=True),
+        Food(icon="🐔", is_meat=True),
+        Food(icon="🐟", is_meat=True),
+        Food(icon="🐷", is_meat=True),
+        Food(icon="🌽", is_meat=False),
+        Food(icon="🥔", is_meat=False),
     ]
 
     print(">>> my_food")
